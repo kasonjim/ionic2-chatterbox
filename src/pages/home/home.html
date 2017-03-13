@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Chatterbox (Mobile)
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card *ngFor="let message of allMessages">
+    <ion-grid>
+      <ion-row>
+        <ion-col width-67><strong>{{message.username}}</strong></ion-col>
+        <ion-col width-33><div class="roomname">{{message.roomname}}</div></ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>{{message.text}}</ion-col>
+      </ion-row>
+    </ion-grid>    
+  </ion-card>
+</ion-content>
+
+<ion-footer>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label stacked>Username</ion-label>
+          <ion-input [(ngModel)]="username"
+                    [value]="username"
+                    type="text"
+                    clearInput=true></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col width-75>
+        <ion-item>
+          <ion-label stacked>Message</ion-label>
+          <ion-input [(ngModel)]="message"
+                    [value]="message"
+                    type="text"
+                    clearInput=true></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col width-25>
+        <button ion-button block outline [disabled]="username.length === 0 || message.length === 0" (click)="postMessage()">Post</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-footer>
